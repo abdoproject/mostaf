@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية - مصطفى اصواب</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            font-size: 11pt;
+        }
+
+        /* رأس السيرة الذاتية */
+        .header {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+            border-bottom: 3px solid #1a3a3a;
+            padding-bottom: 20px;
+        }
+
+        .photo-placeholder {
+    width: 120px;   /* العرض */
+    height: 140px;  /* الطول */
+    background: linear-gradient(135deg, #e8f0f0 0%, #d4e6e6 100%);
+    border: 2px solid #2d5a5a;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #2d5a5a;
+    text-align: center;
+    padding: 10px;
+    object-fit: cover; /* لضمان تغطية الصورة للمساحة بشكل صحيح */
+    overflow: hidden;  /* لمنع خروج الصورة عن حدود المربع */
+}
+
+        .header-info h1 {
+            font-size: 28px;
+            color: #1a3a3a;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .header-info .title {
+            font-size: 14px;
+            color: #2d5a5a;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            font-size: 10pt;
+            color: #555;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* الأقسام الرئيسية */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: white;
+            background-color: #1a3a3a;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-right: 4px solid #2d5a5a;
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .section-content {
+            padding-right: 10px;
+        }
+
+        /* النبذة المهنية */
+        .professional-summary {
+            text-align: justify;
+            line-height: 1.8;
+            color: #333;
+            font-size: 11pt;
+        }
+
+        /* الخبرة العملية */
+        .job {
+            margin-bottom: 20px;
+            padding-right: 15px;
+            border-right: 3px solid #2d5a5a;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: #1a3a3a;
+            font-size: 12pt;
+        }
+
+        .job-duration {
+            font-style: italic;
+            color: #666;
+            font-size: 10pt;
+        }
+
+        .job-description {
+            color: #555;
+            font-size: 11pt;
+            line-height: 1.6;
+        }
+
+        /* المؤهلات */
+        .qualification {
+            padding-right: 15px;
+            margin-bottom: 12px;
+        }
+
+        .qualification-title {
+            font-weight: 600;
+            color: #1a3a3a;
+            margin-bottom: 5px;
+        }
+
+        .qualification-details {
+            color: #555;
+            font-size: 11pt;
+        }
+
+        /* اللغات والمهارات */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .skill-group {
+            padding-right: 10px;
+        }
+
+        .skill-group-title {
+            font-weight: 700;
+            color: #1a3a3a;
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+
+        .skill-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 11pt;
+            color: #555;
+        }
+
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .skill-level {
+            color: #888;
+            font-size: 10pt;
+        }
+
+        /* معلومات إضافية */
+        .additional-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-item {
+            padding-right: 10px;
+            font-size: 11pt;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #1a3a3a;
+        }
+
+        .info-value {
+            color: #555;
+        }
+
+        /* طباعة */
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 15px;
+                max-width: 100%;
+            }
+            .header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+        }
+
+        /* تنسيق الشاشات الصغيرة */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            .header {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .photo-placeholder {
+                width: 100%;
+                height: auto;
+                min-height: 100px;
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            .additional-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- الرأس -->
+        <div class="header">
+            <img src="photo0 (1).jpg" alt="صورة مصطفى اصواب" class="photo-placeholder">
+            <div class="header-info">
+                <h1>مصطفى اصواب</h1>
+                <div class="title">Chef de Partie - طباخ متخصص</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <span>مراكش، المغرب</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📱</span>
+                        <span>+212703647406</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>📧</span>
+                        <span>Mostafaassowab@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- النبذة المهنية -->
+        <div class="section">
+            <div class="section-title">النبذة المهنية</div>
+            <div class="section-content">
+                <div class="professional-summary">
+                    طباخ متخصص (Chef de Partie) ذو خبرة عملية تمتد لأكثر من 4 سنوات في تحضير وتطوير أطباق السوشي. أمتلك مهارة عالية في إدارة أقسام المطبخ، وضمان جودة تقديم الأطباق، والالتزام بمعايير السلامة الغذائية. وقادر على العمل بكفاءة عالية تحت ضغط ساعات الذروة في المطاعم الكبرى.
+                </div>
+            </div>
+        </div>
+
+        <!-- الخبرة العملية -->
+        <div class="section">
+            <div class="section-title">الخبرة العملية</div>
+            <div class="section-content">
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Zushi Marrakech</span>
+                        <span class="job-duration">سنتان</span>
+                    </div>
+                    <div class="job-description">
+                        تحضير وتطوير أطباق السوشي، إدارة قسم المطبخ، ضمان جودة التقديم والالتزام بمعايير النظافة والسلامة الغذائية.
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Hanaya Sushi</span>
+                        <span class="job-duration">سنة واحدة</span>
+                    </div>
+                    <div class="job-description">
+                        تطبيق أعلى معايير السلامة الغذائية والنظافة في معالجة المواد الغذائية، الحفاظ على الجودة العالية للأطباق المقدمة.
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Ashokai Sushi</span>
+                        <span class="job-duration">سنة واحدة</span>
+                    </div>
+                    <div class="job-description">
+                        تنسيق العمل والتقديم الاحترافي للأطباق، العمل ضمن فريق متناسق، ضمان رضا العملاء والخدمة المتميزة.
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <span class="job-title">Sushi Store Marrakech</span>
+                        <span class="job-duration">8 أشهر</span>
+                    </div>
+                    <div class="job-description">
+                        صقل المهارات الأساسية في تحضير السوشي، تقديم الخدمات المتميزة، التعاون مع فريق العمل لتحقيق أهداف المطعم.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- المؤهلات الدراسية -->
+        <div class="section">
+            <div class="section-title">المؤهلات الدراسية</div>
+            <div class="section-content">
+                <div class="qualification">
+                    <div class="qualification-title">السنة الثالثة إعدادي</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اللغات والمهارات -->
+        <div class="section">
+            <div class="section-title">اللغات والمهارات</div>
+            <div class="section-content">
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <div class="skill-group-title">اللغات</div>
+                        <div class="skill-item">
+                            <span class="skill-name">الأمازيغية</span>
+                            <div class="skill-level">اللغة الأم</div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">العربية</span>
+                            <div class="skill-level">مستوى ممتاز</div>
+                        </div>
+                    </div>
+
+                    <div class="skill-group">
+                        <div class="skill-group-title">المهارات المهنية</div>
+                        <div class="skill-item">العمل الجماعي والعمل تحت الضغط</div>
+                        <div class="skill-item">الالتزام بمعايير النظافة والسلامة الغذائية</div>
+                        <div class="skill-item">إدارة أقسام المطبخ بكفاءة</div>
+                        <div class="skill-item">إتقان تحضير أطباق السوشي المتنوعة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- معلومات إضافية -->
+        <div class="section">
+            <div class="section-title">معلومات إضافية</div>
+            <div class="section-content">
+                <div class="additional-info">
+                    <div class="info-item">
+                        <span class="info-label">تاريخ الميلاد:</span>
+                        <span class="info-value">07/08/2001</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">الحالة العائلية:</span>
+                        <span class="info-value">أعزب</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
